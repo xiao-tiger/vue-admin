@@ -4,7 +4,7 @@
       <el-header class="l-header">
         <h3 style="margin: 0; line-height: 60px;">VUE-ADMIN</h3>
         <el-menu
-          :default-active="activeIndex2"
+          :default-active="navBar.active"
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
@@ -12,11 +12,13 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-menu-item index="2">商品</el-menu-item>
-          <el-menu-item index="3">订单</el-menu-item>
-          <el-menu-item index="4">会员</el-menu-item>
-          <el-menu-item index="5">设置</el-menu-item>
+          <el-menu-item 
+            :index="index|numToString" 
+            v-for="(item, index) of navBar.list" 
+            :key="index"
+          >
+            {{item.name}}
+          </el-menu-item>
           <el-submenu index="6">
             <template slot="title">
               <el-avatar
@@ -35,27 +37,17 @@
         <!-- 侧边布局 -->
         <el-aside width="200px">  
           <el-menu
-            default-active="2"
+            default-active="0"
             class="el-menu-vertical-demo"
+            @select="slideSelect"
           >
-            <el-menu-item index="1">
-              <i class="el-icon-location"></i>
-              <span>导航一</span>
-            </el-menu-item>
-
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
-            </el-menu-item>
-
-            <el-menu-item index="3">
-              <i class="el-icon-document"></i>
-              <span slot="title">导航三</span>
-            </el-menu-item>
-
-            <el-menu-item index="4">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航四</span>
+            <el-menu-item 
+              :index="index | numToString"
+              v-for="(item, index) of slideMenu.submenu" 
+              :key="index"
+            >
+              <i :class="item.icon"></i>
+              <span>{{ item.name }}</span>
             </el-menu-item>
           </el-menu>
         </el-aside>
@@ -72,15 +64,77 @@
 </template>
 
 <script>
+import common from '@/common/mixins/common.js'
+
+
 export default {
+  // 混入了filter numToString
+  mixins: [common],
   data() {
     return {
-      activeIndex2: "1"
+      activeIndex2: 0,
+      currentSelectedIndex: 0,
+      navBar: {
+        active: '0',
+        list: [
+          {
+            name: '首页',
+            subActive: '0',
+            submenu: [
+              {
+                icon: 'el-icon-s-home',
+                name: '后台首页'
+              },
+              {
+                icon: 'el-icon-s-claim',
+                name: '商品列表'
+              }
+            ]
+          },
+          {
+            name: '商品',
+            submenu: [
+              {
+                icon: 'el-icon-s-claim',
+                name: '商品列表'
+              }
+            ]
+          },
+          {
+            name: '订单',
+            submenu: []
+          },
+          {
+            name: '会员',
+            submenu: []
+          },
+          {
+            name: '设置',
+            submenu: []
+          }
+        ]
+      }
     };
   },
+  computed: {
+    slideMenu() {
+      return this.navBar.list[this.currentSelectedIndex] || []
+    },
+    
+  },
   methods: {
-    handleSelect() {}
-  }
+    handleSelect(key, keyPath) {
+      this.currentSelectedIndex = Number(key)
+    },
+    slideSelect(key, keyPath) {
+      console.log(key, keyPath)
+    }
+  },
+  // filters: {
+  //   numToString(value) {
+  //     return value.toString()
+  //   }
+  // }
 };
 </script>
 
