@@ -2,7 +2,7 @@
   <div>
     <el-container class="l-container">
       <el-header class="l-header">
-        <h3 style="margin: 0; line-height: 60px;">VUE-ADMIN</h3>
+        <h3 style="margin: 0; line-height: 60px;">{{ $conf.logo }}</h3>
         <el-menu
           :default-active="navBar.active"
           class="el-menu-demo"
@@ -74,47 +74,51 @@ export default {
     return {
       activeIndex2: 0,
       currentSelectedIndex: 0,
-      navBar: {
-        active: '0',
-        list: [
-          {
-            name: '首页',
-            subActive: '0',
-            submenu: [
-              {
-                icon: 'el-icon-s-home',
-                name: '后台首页'
-              },
-              {
-                icon: 'el-icon-s-claim',
-                name: '商品列表'
-              }
-            ]
-          },
-          {
-            name: '商品',
-            submenu: [
-              {
-                icon: 'el-icon-s-claim',
-                name: '商品列表'
-              }
-            ]
-          },
-          {
-            name: '订单',
-            submenu: []
-          },
-          {
-            name: '会员',
-            submenu: []
-          },
-          {
-            name: '设置',
-            submenu: []
-          }
-        ]
-      }
-    };
+      navBar: {}
+      // navBar: {
+      //   active: '0',
+      //   list: [
+      //     {
+      //       name: '首页',
+      //       subActive: '0',
+      //       submenu: [
+      //         {
+      //           icon: 'el-icon-s-home',
+      //           name: '后台首页'
+      //         },
+      //         {
+      //           icon: 'el-icon-s-claim',
+      //           name: '商品列表'
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       name: '商品',
+      //       submenu: [
+      //         {
+      //           icon: 'el-icon-s-claim',
+      //           name: '商品列表'
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       name: '订单',
+      //       submenu: []
+      //     },
+      //     {
+      //       name: '会员',
+      //       submenu: []
+      //     },
+      //     {
+      //       name: '设置',
+      //       submenu: []
+      //     }
+      //   ]
+      // }
+    }
+  },
+  created() {
+    this.navBar = this.$conf.navBar
   },
   computed: {
     slideMenu() {
