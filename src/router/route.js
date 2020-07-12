@@ -10,7 +10,14 @@ const routes = [
             {
                 path: 'index',
                 name: 'index',
+                meta: { title: '后台首页' },
                 component: () => import('../views/index/index.vue')
+            },
+            {
+                path: 'shop/goods/list',
+                name: 'shop_goods_list',
+                meta: { title: '商品列表' },
+                component: () => import('../views/shop/goods/list.vue')
             }
         ]
     },
