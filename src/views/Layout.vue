@@ -72,7 +72,6 @@
           </div>
 
           <router-view></router-view>
-          <div style="height: 1000px"></div>
           <el-backtop target=".el-main"></el-backtop>
         </el-main>
       </el-container>
