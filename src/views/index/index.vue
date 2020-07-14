@@ -64,6 +64,75 @@
         </el-card>
       </el-col>
     </el-row>
+
+    <el-row :gutter="20" class="my-3">
+      <el-col :span="12">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>开片名称</span>
+            <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+          </div>
+          <div class="media align-items-center border">
+            <p class="bg-light mb-0 py-4 px-3">销量总额</p>
+            <div class="media-body">
+              <p class="mb-0 border-bottom pb-1">
+                <span class="ml-3 mb-2">销量金额</span>
+              </p>
+              <p class="mb-0 pt-1">
+                <span class="ml-3">销量金额</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="media align-items-center border mt-5">
+            <p class="bg-light mb-0 py-4 px-3">销量总额</p>
+            <div class="media-body">
+              <p class="mb-0 border-bottom pb-1">
+                <span class="ml-3 mb-2">销量金额</span>
+              </p>
+              <p class="mb-0 pt-1">
+                <span class="ml-3">销量金额</span>
+              </p>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="12">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>开片名称</span>
+            <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+          </div>
+          <div class="row">
+            <el-table
+              :data="tableData"
+              height="196"
+              border
+              style="width: 100%"
+            >
+              <el-table-column
+                prop="id"
+                label="#"
+                width="50"
+              >
+              </el-table-column>
+              <el-table-column
+                prop="info"
+                label="商品信息"
+                
+              >
+              </el-table-column>
+              <el-table-column
+                prop="num"
+                label="销售"
+                width="100"
+              >
+              </el-table-column>
+            </el-table>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -74,6 +143,27 @@ export default {
   name: "Index",
   data() {
     return {
+      tableData: [{
+        id: '1',
+        info: '上海市普陀区金沙江路 1518 弄',
+        num: '9'
+      }, {
+        id: '2',
+        info: '上海市普陀区金沙江路 1518 弄',
+        num: '9'
+      }, {
+        id: '3',
+        info: '上海市普陀区金沙江路 1518 弄',
+        num: '9'
+      },{
+        id: '4',
+        info: '上海市普陀区金沙江路 1518 弄',
+        num: '9'
+      },{
+        id: '5',
+        info: '上海市普陀区金沙江路 1518 弄',
+        num: '9'
+      }],
       counts: [
         {
           icon: "el-icon-user-solid",

@@ -54,7 +54,7 @@
         </el-aside>
 
         <!-- 主布局 -->
-        <el-main class="bg-light">
+        <el-main class="bg-light" style="padding-bottom: 60px;">
           <div 
             class="border-bottom bg-white" 
             style="padding: 20px; margin: -20px; margin-bottom: 0;"
@@ -72,6 +72,7 @@
           </div>
 
           <router-view></router-view>
+          <!-- 回到顶部 -->
           <el-backtop target=".el-main"></el-backtop>
         </el-main>
       </el-container>
