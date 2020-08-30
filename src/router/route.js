@@ -18,6 +18,12 @@ const routes = [
                 name: 'shop_goods_list',
                 meta: { title: '商品列表' },
                 component: () => import('../views/shop/goods/list.vue')
+            },
+            {
+                path: 'images',
+                name: 'images',
+                meta: { title: '相册管理' },
+                component: () => import('../views/images/index.vue')
             }
         ]
     },
